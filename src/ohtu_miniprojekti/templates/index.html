@@ -1,11 +1,55 @@
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viitteiden hallinta</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h1>Viitteiden hallinta</h1>
-    <p>lomake viitteille</p>
+
+    <header>
+        <h1>Viitteiden hallinta</h1>
+    </header>
+
+    <main>
+
+        <section class="card">
+            <h2>Lisää uusi viite</h2>
+
+            <form>
+                <label for="author">Tekijä</label>
+                <input type="text" id="author"
+                       placeholder="Tekijän nimi">
+
+                <label for="title">Otsikko</label>
+                <input type="text" id="title"
+                       placeholder="Lähteen otsikko">
+
+                <label for="year">Julkaisuvuosi</label>
+                <input type="number" id="year"
+                       placeholder="2026">
+
+                <label for="type">Viitteen tyyppi</label>
+                <select id="type">
+                    <option>Verkkosivu</option>
+                    <option>Kirja</option>
+                    <option>Artikkeli</option>
+                    <option>Muu</option>
+                </select>
+
+                <button type="submit">Lisää viite</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        Viitteiden hallinta © 2026
+    </footer>
+
 </body>
 </html>
+
