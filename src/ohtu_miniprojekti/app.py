@@ -10,10 +10,19 @@ def index():
 @app.route("/viitteet", methods =["GET", "POST"])
 def lisaa_viite():
     if request.method == "POST":
-        author = request.form["author"]
-        title = request.form["title"]
-        year = request.form["year"]
-        reference_type = request.form["type"]
+        author = request.form.get("author", "").strip()
+        title = request.form.get("title", "").strip()
+        year = request.form.get("year", "").strip()
+        reference_type = request.form.get("type", "").strip()
+
+        if not author or not title or not year or not reference_type:
+            flash("Kaikki kentät on täytettävä!")
+            return redirect(url_for("index"))
+
+        if not year.isdigit():
+            flash("Vuosiluvun on oltava numero!")
+            return redirect(url_for("index"))
+
         tallenna_viite(author, title, year, reference_type)
         flash("viite lisätty")
         return redirect(url_for("index"))
