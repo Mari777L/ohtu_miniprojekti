@@ -23,6 +23,11 @@
             <h2>Lisää uusi viite</h2>
 
             <form name="viite" action="/viitteet" method="POST">
+            <label for="citation_key">Referenssiavain</label>
+            <input type="text" id="citation_key" name="citation_key"
+                        placeholder="Esim. Smith2026" required>
+
+
                 <label for="author">Tekijä</label>
                 <input type="text" id="author" name="author"
                        placeholder="Tekijän nimi">
@@ -46,6 +51,17 @@
                 <button type="submit">Lisää viite</button>
             </form>
         </section>
+
+    <section class="card">
+    <h2>Viitelistat</h2>
+
+    <p>Katso kaikki lisätyt viitteet.</p>
+
+    <a href="{{ url_for('viitelista') }}">
+        Näytä viitelista
+    </a>
+    </section>
+    
     </main>
 
     <footer>

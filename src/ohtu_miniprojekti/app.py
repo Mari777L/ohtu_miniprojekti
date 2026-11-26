@@ -49,6 +49,11 @@ def tallenna_viite(author, title, year, reference_type):
         )
     conn.close()
 
+@app.route("/viitelista")
+def viitelista():
+#    viitteet = hae_viitteet()
+    return render_template("viitelista.html", viitteet=viitteet)
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
     #app.run(host="0.0.0.0", port=80)
