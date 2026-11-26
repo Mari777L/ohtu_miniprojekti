@@ -11,7 +11,21 @@
 
 <body>
 
-    {% with messages = get_flashed_messages() %} {% if messages %} {{ messages }} {% endif %} {% endwith %}  
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <p id = "flash"> {{ messages[0] }}</p>
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        const flash = document.getElementById("flash");
+
+        if (flash) {
+            setTimeout(() => {
+                flash.remove();
+            }, 5000);
+        }
+    </script>
 
     <header>
         <h1>Viitteiden hallinta</h1>
