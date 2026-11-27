@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Muokkaa viitettä</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Muokkaa viitettä</h1>
+    </header>
+
+    <main>
+
+        <section class="card">
+
+            <h2>Muokkaa viitteen tietoja</h2>
+
+            <form method="POST">
+
+                <label for="citation_key">Referenssiavain</label>
+                <input type="text" id="citation_key"
+                       name="citation_key"
+                       value="{{ viite['citation_key'] }}"
+                       required>
+
+                <label for="author">Tekijä</label>
+                <input type="text" id="author"
+                       name="author"
+                       value="{{ viite['author'] }}"
+                       required>
+
+                <label for="title">Otsikko</label>
+                <input type="text" id="title"
+                       name="title"
+                       value="{{ viite['title'] }}"
+                       required>
+
+                <label for="year">Julkaisuvuosi</label>
+                <input type="number" id="year"
+                       name="year"
+                       value="{{ viite['year'] }}"
+                       required>
+
+                <label for="type">Viitteen tyyppi</label>
+
+                <select id="type" name="type" required>
+                    <option value="Verkkosivu"
+                        {% if viite['reference_type'] == 'Verkkosivu' %}selected{% endif %}>
+                        Verkkosivu
+                    </option>
+
+                    <option value="Kirja"
+                        {% if viite['reference_type'] == 'Kirja' %}selected{% endif %}>
+                        Kirja
+                    </option>
+
+                    <option value="Artikkeli"
+                        {% if viite['reference_type'] == 'Artikkeli' %}selected{% endif %}>
+                        Artikkeli
+                    </option>
+
+                    <option value="Muu"
+                        {% if viite['reference_type'] == 'Muu' %}selected{% endif %}>
+                        Muu
+                    </option>
+                </select>
+
+                <button type="submit">Tallenna muutokset</button>
+
+            </form>
+
+            <p>
+                <a href="{{ url_for('viitelista') }}">
+                    Peruuta
+                </a>
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Viitteiden hallinta © 2026
+    </footer>
+
+</body>
+</html>

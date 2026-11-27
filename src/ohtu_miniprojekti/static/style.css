@@ -98,4 +98,76 @@ footer {
 }
 
 
+.viite-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.viite-moduuli {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.viite-otsikko {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.viite-otsikko h3 {
+    margin: 5px 0 12px;
+}
+
+.viite-otsikko span {
+    background-color: #e8eef7;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.viite-moduuli p {
+    margin: 10px 0;
+}
+
+.viite-toiminnot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+}
+
+.muokkaa-nappi,
+.poista-nappi {
+    padding: 9px 18px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.muokkaa-nappi {
+    background-color: #dce9f7;
+    color: #234d75;
+}
+
+.poista-nappi {
+    background-color: #f5dada;
+    color: #9b2525;
+}
+
+.viite-toiminnot form {
+    margin: 0;
+}
+
+
+
 

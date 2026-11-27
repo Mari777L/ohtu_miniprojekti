@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Viitelista</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Viitteiden hallinta</h1>
+    </header>
+
+    <main>
+
+        <section class="card">
+
+            <h2>Viitelistat</h2>
+
+            {% if viitteet %}
+
+                <div class="viite-lista">
+
+                    {% for viite in viitteet %}
+
+                    <div class="viite-moduuli">
+
+                        <div class="viite-otsikko">
+                            <h3>{{ viite["citation_key"] }}</h3>
+                            <span>{{ viite["reference_type"] }}</span>
+                        </div>
+
+                        <p>
+                            <strong>Tekijä:</strong>
+                            {{ viite["author"] }}
+                        </p>
+
+                        <p>
+                            <strong>Otsikko:</strong>
+                            {{ viite["title"] }}
+                        </p>
+
+                        <p>
+                            <strong>Julkaisuvuosi:</strong>
+                            {{ viite["year"] }}
+                        </p>
+
+                        <!-- Muokkaa ja poista painikkeet -->
+
+                        <div class="viite-toiminnot">
+
+                            <a href="{{ url_for('muokkaa_viite', id=viite['id']) }}"
+                               class="muokkaa-nappi">
+                                Muokkaa
+                            </a>
+
+                            <form action="{{ url_for('poista_viite', id=viite['id']) }}"
+                                  method="POST"
+                                  onsubmit="return confirm('Haluatko varmasti poistaa tämän viitteen?');">
+
+                                <button type="submit"
+                                        class="poista-nappi">
+                                    Poista
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p>Viitteitä ei ole vielä lisätty.</p>
+
+            {% endif %}
+
+        </section>
+
+        <section class="card">
+            <a href="{{ url_for('index') }}">
+                Takaisin etusivulle
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        Viitteiden hallinta © 2026
+    </footer>
+
+</body>
+</html>
